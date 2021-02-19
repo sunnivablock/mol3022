@@ -1,12 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import page from "./components/page.jsx"
+// import page from "./components/page.jsx"
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-         <page></page>
+         {/* <page></page> */}
         <img src={logo} className="App-logo" alt="logo" />
         <p>
          Bio prosjekt
