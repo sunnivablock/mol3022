@@ -1,10 +1,15 @@
-import react from React
+import React, {Text} from "react";
+import Graph from "./Graph";
 
-const page = () => {
+
+const Page = () => {
 
     return(
-        <Text>Bio Prosjekt</Text>
+        <div>
+        <p>To do: finne ut av hva vi må ha med</p>
+        <Graph></Graph>
+        </div>
     )
 }
 
-export default page;
+export default Page;
