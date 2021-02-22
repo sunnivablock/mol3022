@@ -14,10 +14,10 @@ const Graph = () => {
   
     return(
        <div className="container">
-       {/* text felt brukeren kan bruke. må definere om change og value */}
+       {/* text felt brukeren kan bruke. må definere onChange og value */}
        <div style={{paddingTop:'25px'}}>
            <TextField
-            className="DNAText"
+            className="DNAInput"
             size="medium"
             variant="outlined"
             type="text"
