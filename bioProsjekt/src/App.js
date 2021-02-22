@@ -1,24 +1,20 @@
-import logo from './logo.svg';
+import { Typography } from '@material-ui/core';
 import './App.css';
-// import page from "./components/page.jsx"
+import dna from './dna_PNG40.png';
+import Page from './components/page';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-         {/* <page></page> */}
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-         Bio prosjekt
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Bio Prosjekt
-        </a>
+      <header className="App-header">      
+        <div style={{display:"flex", flexDirection:"row"}}>
+          <img style={{padding:"30px"}} width={100} height={100} src={dna}></img>
+          <div style={{padding:"50px"}}>
+            <Typography variant="h2">Bio prosjekt</Typography>
+          </div>
+          <img style={{padding:"30px"}} width={100} height={100} src={dna}></img>
+        </div>
+        <Page/>        
       </header>
     </div>
   );
