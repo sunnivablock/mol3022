@@ -1,26 +1,35 @@
-import React, {Text} from "react";
+import React, { useState} from "react";
 import "./GraphStyle.css";
+import { Typography, TextField } from '@material-ui/core';
+
 
 const Graph = () => {
 
-    const value = false;
-    const text = "Skriv inn tekst her";
+    const  [value, setValue] = useState("");
 
-    const onChange = () =>{
-        value = !value
-      }
-
+    const magic = (string) => {
+      const array = string.split("");
+      return array.reverse().join("")
+    }
+  
     return(
-       <div className="container">¨
+       <div className="container">
        {/* text felt brukeren kan bruke. må definere om change og value */}
-           <input
+       <div style={{paddingTop:'25px'}}>
+           <TextField
             className="DNAText"
+            size="medium"
+            variant="outlined"
             type="text"
-            value={text}
-            onChange={onChange}
+            onChange={(e) => {
+              const reversed =magic(e.target.value)
+              setValue(reversed)
+            }}
             placeholder="Please enter DNA sequence for analysis (Characters acgt or ACGT)"
           />
+          </div>
           <p>Her kommer resultatet</p>
+          <Typography>{value}</Typography>
        </div>
     )
 }
