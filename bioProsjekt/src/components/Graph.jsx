@@ -1,6 +1,8 @@
 import React, { useState} from "react";
 import "./GraphStyle.css";
 import { Typography, TextField } from '@material-ui/core';
+import {getMatrix} from "../queries/jaspar";
+
 
 
 const Graph = () => {
@@ -12,6 +14,8 @@ const Graph = () => {
       return array.reverse().join("")
     }
   
+    const matrix = getMatrix();
+    console.log(matrix)
     return(
        <div className="container">
        {/* text felt brukeren kan bruke. må definere onChange og value */}
