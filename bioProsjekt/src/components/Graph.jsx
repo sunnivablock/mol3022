@@ -5,7 +5,7 @@ import {getMatrix} from "../queries/jaspar";
 
 
 
-const Graph = () => {
+function Graph() {
 
     const  [value, setValue] = useState("");
 
@@ -15,7 +15,12 @@ const Graph = () => {
     }
   
     const matrix = getMatrix();
-    console.log(matrix)
+    //fungerer ikke å consol logge fra denne fila, den venter på promise fra getMatrix()
+    console.log('graph', matrix);
+
+    //TODO: Legge inn funksjonskall som henter ut detaljer for en gitt id:
+    //const one = getMatrix(matrix.results[0].matrix_id);
+
     return(
        <div className="container">
        {/* text felt brukeren kan bruke. må definere onChange og value */}
