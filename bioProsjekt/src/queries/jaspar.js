@@ -16,7 +16,7 @@ export async function getMatrix(id) {
     if (id != null){
         res = await axios.get(cors+baseUrl+id, config)
     } 
-     console.log('queries', res.data)
-    return res.data
-
+    const allData = await res.data;
+    console.log('i jaspar.jsx', allData)
+    return allData;
 }

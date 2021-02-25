@@ -15,11 +15,18 @@ function Graph() {
     }
   
     const matrix = getMatrix();
-    //fungerer ikke å consol logge fra denne fila, den venter på promise fra getMatrix()
-    console.log('graph', matrix);
 
     //TODO: Legge inn funksjonskall som henter ut detaljer for en gitt id:
     //const one = getMatrix(matrix.results[0].matrix_id);
+
+    //For å hente ut informasjonen av er promise, må det kalles på i en funksjon som vist under
+    //Henter her bare ut foreløpig id'en til den første i listen
+    matrix.then(function(result) {
+      console.log("I graph.jsx", result.results[0].matrix_id)
+      //Husker ikke hvordan alt med state fungerer, verdien må videresendes herifra til state
+      return result;
+  });
+
 
     return(
        <div className="container">
