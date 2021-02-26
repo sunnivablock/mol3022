@@ -5,7 +5,7 @@ import {getMatrix} from "../queries/jaspar";
 
 
 
-const Graph = () => {
+function Graph() {
 
     const  [value, setValue] = useState("");
 
@@ -15,7 +15,19 @@ const Graph = () => {
     }
   
     const matrix = getMatrix();
-    console.log(matrix)
+
+    //TODO: Legge inn funksjonskall som henter ut detaljer for en gitt id:
+    //const one = getMatrix(matrix.results[0].matrix_id);
+
+    //For å hente ut informasjonen av er promise, må det kalles på i en funksjon som vist under
+    //Henter her bare ut foreløpig id'en til den første i listen
+    matrix.then(function(result) {
+      console.log("I graph.jsx", result.results[0].matrix_id)
+      //Husker ikke hvordan alt med state fungerer, verdien må videresendes herifra til state
+      return result;
+  });
+
+
     return(
        <div className="container">
        {/* text felt brukeren kan bruke. må definere onChange og value */}
