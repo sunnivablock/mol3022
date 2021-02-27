@@ -3,6 +3,8 @@ import "./GraphStyle.css";
 import { Typography, TextField, Button } from '@material-ui/core';
 import {getMatrix} from "../queries/jaspar";
 
+
+
 function Graph() {
 
     const [id, setId ] = useState("PF0144");
@@ -17,7 +19,7 @@ function Graph() {
     }
 
 //Nå må man skrive inn gyldig ID i tekstfeltet, må håndtere at bruker kanskje skriver inn ugyldig ID
-
+// Alt krasjer når man begynner å skrive inn ny id..
 /* neste steg blir å bruke dataen fra matrixen til å "d identify the most likely 
 transcription factor binding sites in the DNA sequence" */
 
@@ -46,9 +48,10 @@ transcription factor binding sites in the DNA sequence" */
             Search
           </Button>
         </div>
+        <Typography>Other valid IDs: PF0017, PF0077</Typography>
           <p/>
           <Typography variant="h6">{"Position Weight Matrix for  "+ id +": "}</Typography>
-          {oneMatrix.pfm &&
+          {oneMatrix.A &&
             <div>
               <Typography>{"A:  "+ oneMatrix.A.join()}</Typography>
               <Typography>{"C:  "+ oneMatrix.C.join()}</Typography>
