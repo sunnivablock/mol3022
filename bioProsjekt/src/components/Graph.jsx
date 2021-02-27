@@ -7,7 +7,8 @@ import {getMatrix} from "../queries/jaspar";
 
 function Graph() {
 
-    const  [value, setValue] = useState("");
+    const [value, setValue] = useState("");
+    const [id, setId ] = useState("hei");
 
     const magic = (string) => {
       const array = string.split("");
@@ -16,6 +17,7 @@ function Graph() {
   
     const matrix = getMatrix();
 
+
     //TODO: Legge inn funksjonskall som henter ut detaljer for en gitt id:
     //const one = getMatrix(matrix.results[0].matrix_id);
 
@@ -23,9 +25,11 @@ function Graph() {
     //Henter her bare ut foreløpig id'en til den første i listen
     matrix.then(function(result) {
       console.log("I graph.jsx", result.results[0].matrix_id)
+      setId(result.results[0].matrix_id)
       //Husker ikke hvordan alt med state fungerer, verdien må videresendes herifra til state
       return result;
   });
+ 
 
 
     return(
@@ -46,6 +50,7 @@ function Graph() {
           </div>
           <p>Her kommer resultatet</p>
           <Typography>{value}</Typography>
+          <Typography>{id}</Typography>
        </div>
     )
 }
