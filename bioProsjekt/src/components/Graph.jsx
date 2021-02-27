@@ -1,56 +1,61 @@
 import React, { useState} from "react";
 import "./GraphStyle.css";
-import { Typography, TextField } from '@material-ui/core';
+import { Typography, TextField, Button } from '@material-ui/core';
 import {getMatrix} from "../queries/jaspar";
-
-
 
 function Graph() {
 
-    const [value, setValue] = useState("");
-    const [id, setId ] = useState("hei");
+    const [id, setId ] = useState("PF0144");
+    const [oneMatrix, setOneMatrix ] = useState({});
+    const matrix = getMatrix(id);
 
-    const magic = (string) => {
-      const array = string.split("");
-      return array.reverse().join("")
+    const fetchData = () => {
+      matrix.then(function(result) {
+        setOneMatrix(result.pfm)
+        return result;
+    });
     }
-  
-    const matrix = getMatrix();
 
+//Nå må man skrive inn gyldig ID i tekstfeltet, må håndtere at bruker kanskje skriver inn ugyldig ID
 
-    //TODO: Legge inn funksjonskall som henter ut detaljer for en gitt id:
-    //const one = getMatrix(matrix.results[0].matrix_id);
-
-    //For å hente ut informasjonen av er promise, må det kalles på i en funksjon som vist under
-    //Henter her bare ut foreløpig id'en til den første i listen
-    matrix.then(function(result) {
-      console.log("I graph.jsx", result.results[0].matrix_id)
-      setId(result.results[0].matrix_id)
-      //Husker ikke hvordan alt med state fungerer, verdien må videresendes herifra til state
-      return result;
-  });
- 
-
+/* neste steg blir å bruke dataen fra matrixen til å "d identify the most likely 
+transcription factor binding sites in the DNA sequence" */
 
     return(
-       <div className="container">
-       {/* text felt brukeren kan bruke. må definere onChange og value */}
-       <div style={{paddingTop:'25px'}}>
-           <TextField
+      <div className="container">
+       <div style={{padding:'25px', display:"flex", flexDirection:"column"}}>
+          <TextField
             className="DNAInput"
             size="medium"
             variant="outlined"
             type="text"
+            value={id}
             onChange={(e) => {
-              const reversed =magic(e.target.value)
-              setValue(reversed)
+              setId(e.target.value)
             }}
             placeholder="Please enter DNA sequence for analysis (Characters acgt or ACGT)"
           />
-          </div>
-          <p>Her kommer resultatet</p>
-          <Typography>{value}</Typography>
-          <Typography>{id}</Typography>
+          <Button 
+            size="small"
+            fullWidth={false}
+            variant="contained"
+            onClick={() => {
+              fetchData()
+            }}
+          > 
+            Search
+          </Button>
+        </div>
+          <p/>
+          <Typography variant="h6">{"Position Weight Matrix for  "+ id +": "}</Typography>
+          {oneMatrix.pfm &&
+            <div>
+              <Typography>{"A:  "+ oneMatrix.A.join()}</Typography>
+              <Typography>{"C:  "+ oneMatrix.C.join()}</Typography>
+              <Typography>{"T:  "+ oneMatrix.T.join()}</Typography>
+              <Typography>{"G:  "+ oneMatrix.G.join()}</Typography>
+            </div>
+          }
        </div>
     )
 }
