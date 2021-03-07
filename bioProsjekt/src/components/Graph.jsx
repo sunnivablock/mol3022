@@ -12,7 +12,7 @@ function Graph() {
     const matrix = getMatrix(id);
 
     const fetchData = () => {
-      matrix.then(function(result) {
+      getMatrix(id).then(function(result) {
         setOneMatrix(result.pfm)
         return result;
     });
