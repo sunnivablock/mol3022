@@ -20,12 +20,17 @@ function Graph() {
     });
     }
 
+    const pwm = (freq, total) => {
+      let p = (freq +Math.sqrt(total)*0.25)/(total+(Math.sqrt(total)))
+      return Math.log2(p/0.25)
+    }
+
     const calculatePWM = (matrix) => {
       let common= matrix.A[0]+matrix.C[0]+matrix.G[0]+matrix.T[0];
-      let ARow=matrix.A.map((element) => element/common) //Math.log2((element/common)/0.25)
-      let CRow=matrix.C.map((element) => element/common)
-      let GRow=matrix.G.map((element) => element/common)
-      let TRow=matrix.T.map((element) => element/common)
+      let ARow=matrix.A.map((element) => pwm(element, common)) //Math.log2((element/common)/0.25)
+      let CRow=matrix.C.map((element) => pwm(element, common))
+      let GRow=matrix.G.map((element) => pwm(element, common))
+      let TRow=matrix.T.map((element) => pwm(element, common))
       const PWM = {"A":ARow, "C": CRow,"G": GRow, "T":TRow}
       return PWM
       
