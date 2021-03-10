@@ -1,7 +1,7 @@
 import { Typography } from '@material-ui/core';
 import './App.css';
 import dna from './dna_PNG40.png';
-import Page from './components/page';
+import Graph from './components/Graph';
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
           </div>
           <img style={{padding:"30px"}} width={100} height={100} src={dna}></img>
         </div>
-        <Page/>        
+        <Graph/>        
       </header>
     </div>
   );
