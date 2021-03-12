@@ -3,6 +3,8 @@ import "./GraphStyle.css";
 import { Typography, TextField, Button } from '@material-ui/core';
 import {getMatrix} from "../queries/jaspar";
 import { calculateMatches, calculatePWM } from "../functionality/calculations";
+import { VictoryChart, VictoryBar, VictoryTheme } from "victory";
+import { Bar, Chart, Line } from "react-chartjs-2";
 
 
 function Graph() {
@@ -32,7 +34,8 @@ function Graph() {
     return(
       <div className="container">
        <div style={{padding:'25px', display:"flex", flexDirection:"column"}}>
-       <Typography variant="h6">{"1. Search for a matrix"}</Typography>
+       {/* <p style={{alignSelf:'flex-start', fontSize:'20px'}}> 1.Search for a matrix:</p> */}
+        <Typography color='TextSecondary' align='left' variant="h6">{"1. Search for a matrix"}</Typography>
           <TextField
             className="DNAInput"
             size="medium"
@@ -44,7 +47,9 @@ function Graph() {
             }}
             placeholder="Please enter ID"
           />
+          <div style={{padding:'5px'}}></div>
           <Button 
+            className= 'button'
             size="small"
             fullWidth={false}
             variant="contained"
@@ -54,20 +59,22 @@ function Graph() {
           > 
             Search matrix
           </Button>
-          <Typography>Other valid IDs: PF0017, PF0077</Typography>
+          <p style={{alignSelf:'center', fontSize:'12px', color:'#505050'}}> Other valid IDs: PF0017, PF0077</p>
+        {/* Må bruke <p> fordi med typography klarte jeg ikke få luft mellom knap og matrisen*/}
+           {/* <Typography color='TextSecondary' align='center' variant='caption'>Other valid IDs: PF0017, PF0077</Typography> */}
           {oneMatrix.A &&
-            <div>
-              <Typography variant="subtitle1" >{"Position Frequency Matrix for  "+ id +": "}</Typography>
-              <Typography>{"A:  "+ oneMatrix.A.join()}</Typography>
-              <Typography>{"C:  "+ oneMatrix.C.join()}</Typography>
-              <Typography>{"T:  "+ oneMatrix.T.join()}</Typography>
-              <Typography>{"G:  "+ oneMatrix.G.join()}</Typography>
+            <div className='matrise'>
+              <Typography align='left' variant="subtitle1" >{"Position Frequency Matrix for  "+ id +": "}</Typography>
+              <Typography align='left'>{"A:  "+ oneMatrix.A.join()}</Typography>
+              <Typography align='left'>{"C:  "+ oneMatrix.C.join()}</Typography>
+              <Typography align='left'>{"T:  "+ oneMatrix.T.join()}</Typography>
+              <Typography align='left'>{"G:  "+ oneMatrix.G.join()}</Typography>
             </div>
           }
          <p/>
           {oneMatrix.A &&
-          <div>
-             <Typography variant="h6">{"2. Type in a DNA sequence for matching"}</Typography>
+          <div style={{padding: '0px', display:"flex", flexDirection:"column"}}>
+             <Typography color='TextSecondary' align='left' variant="h6">{"2. Type in a DNA sequence for matching"}</Typography> 
           <TextField 
             className="DNASequence"
             size="medium"
@@ -82,6 +89,7 @@ function Graph() {
             placeholder="Please enter DNA sequence for analysis (Characters acgt or ACGT)"
           />
             <Button 
+            className= 'button'
             size="small"
             fullWidth={false}
             variant="contained"
@@ -96,6 +104,10 @@ function Graph() {
             <Typography>{"We found matches: "+ match  }</Typography>
             //<Typography>{"and transcription factor bindings are most likely from position "+ Math.max(match)}</Typography> funker ikke når vi har negative tall :/
           }
+           <div className="resultater">
+              {/* Funker ikke helt enda men ska fikse grafen, lar derfor også noen imports stående selvom de ikke er i bruk */}
+              <Line data={match} />
+            </div>
           </div>
         }
         </div>

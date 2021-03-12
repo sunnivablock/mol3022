@@ -8,11 +8,11 @@ function App() {
     <div className="App">
       <header className="App-header">      
         <div style={{display:"flex", flexDirection:"row"}}>
-          <img style={{padding:"30px"}} width={100} height={100} src={dna}></img>
+          {/* <img style={{padding:"30px"}} width={100} height={100} src={dna}></img> */}
           <div style={{padding:"50px"}}>
-            <Typography variant="h4">Bio prosjekt</Typography>
+            <Typography variant="h4">Transcription Factor Binding Site Generator</Typography>
           </div>
-          <img style={{padding:"30px"}} width={100} height={100} src={dna}></img>
+          {/* <img style={{padding:"30px"}} width={100} height={100} src={dna}></img> */}
         </div>
         <Graph/>        
       </header>

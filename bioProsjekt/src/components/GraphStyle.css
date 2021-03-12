@@ -1,7 +1,29 @@
 .container {
   background-color: white;
-  height: 800px;
+  height: 140vh;
   width: 700px;
   box-shadow: 5px;
   border-radius: 9px;
+}
+
+.button {
+    border-top: 2vh;
+    padding-top: 5px;
+    width: 30%;
+    align-self: center;
+    box-shadow: 0;
+}
+
+.matrise {
+    align-items: center;
+    align-content: center;
+    padding-left: 2%;
+    background-color: beige;
+    border-radius: 7px;
+    
+}
+
+.resultater {
+    padding: 25px;
+    padding-top: 80px;
 }
