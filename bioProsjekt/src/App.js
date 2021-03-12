@@ -1,7 +1,7 @@
 import { Typography } from '@material-ui/core';
 import './App.css';
 import dna from './dna_PNG40.png';
-import Page from './components/page';
+import Graph from './components/Graph';
 
 function App() {
   return (
@@ -10,11 +10,11 @@ function App() {
         <div style={{display:"flex", flexDirection:"row"}}>
           <img style={{padding:"30px"}} width={100} height={100} src={dna}></img>
           <div style={{padding:"50px"}}>
-            <Typography variant="h2">Bio prosjekt</Typography>
+            <Typography variant="h4">Bio prosjekt</Typography>
           </div>
           <img style={{padding:"30px"}} width={100} height={100} src={dna}></img>
         </div>
-        <Page/>        
+        <Graph/>        
       </header>
     </div>
   );
