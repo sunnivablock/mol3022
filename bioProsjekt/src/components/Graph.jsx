@@ -8,7 +8,7 @@ import { Bar, Chart, Line } from "react-chartjs-2";
 
 
 function Graph() {
-    const [id, setId ] = useState("PF0144");
+    const [id, setId ] = useState("");
     const [oneMatrix, setOneMatrix ] = useState({});
     const [sequence, setSequence] = useState("");
     const [dnaError, setDNAError]= useState(false);
@@ -35,7 +35,7 @@ function Graph() {
       <div className="container">
        <div style={{padding:'25px', display:"flex", flexDirection:"column"}}>
        {/* <p style={{alignSelf:'flex-start', fontSize:'20px'}}> 1.Search for a matrix:</p> */}
-        <Typography color='TextSecondary' align='left' variant="h6">{"1. Search for a matrix"}</Typography>
+        <Typography color='textSecondary' align='left' variant="h6">{"1. Search for a matrix"}</Typography>
           <TextField
             className="DNAInput"
             size="medium"
@@ -45,7 +45,7 @@ function Graph() {
             onChange={(e) => {
               setId(e.target.value)
             }}
-            placeholder="Please enter ID"
+            placeholder="Please enter ID. "
           />
           <div style={{padding:'5px'}}></div>
           <Button 
@@ -74,7 +74,7 @@ function Graph() {
          <p/>
           {oneMatrix.A &&
           <div style={{padding: '0px', display:"flex", flexDirection:"column"}}>
-             <Typography color='TextSecondary' align='left' variant="h6">{"2. Type in a DNA sequence for matching"}</Typography> 
+             <Typography color='textSecondary' align='left' variant="h6">{"2. Type in a DNA sequence for matching"}</Typography> 
           <TextField 
             className="DNASequence"
             size="medium"
@@ -101,13 +101,27 @@ function Graph() {
             Search
           </Button>
           {match &&
-            <Typography>{"We found matches: "+ match  }</Typography>
-            //<Typography>{"and transcription factor bindings are most likely from position "+ Math.max(match)}</Typography> funker ikke når vi har negative tall :/
+          <div className="resultater">
+            {/* <Typography>{"We found matches: "+ match + "and transcription factor bindings are most likely from position " + Math.max(match)}</Typography> */}
+            <Typography style={{width: 600}}> The graph shows the trancription factor of the different positions on the DNA sequence.
+               The X-axis shows the position within the DNA sequence, while the Y-axis display the values of the trancription factors.</Typography>
+            <VictoryChart domainPadding={30} theme={VictoryTheme.material}  prependDefaultAxes={true}>
+                <VictoryBar
+                  alignment="start"
+                  style={{ data: { fill: "#ffa500" } }}
+                  data={match}
+                  width={300}
+                  labels= {({ datum }) => datum.y}
+                  barRatio={0.4}
+                  animate={{
+                    duration: 2000,
+                    onLoad: { duration: 1000 }
+                  }}
+                  />
+              </VictoryChart>
+          </div>
           }
-           <div className="resultater">
-              {/* Funker ikke helt enda men ska fikse grafen, lar derfor også noen imports stående selvom de ikke er i bruk */}
-              <Line data={match} />
-            </div>
+          
           </div>
         }
         </div>

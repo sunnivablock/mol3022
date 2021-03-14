@@ -9,7 +9,7 @@ function App() {
       <header className="App-header">      
         <div style={{display:"flex", flexDirection:"row"}}>
           {/* <img style={{padding:"30px"}} width={100} height={100} src={dna}></img> */}
-          <div style={{padding:"50px"}}>
+          <div style={{paddingBottom:"50px"}}>
             <Typography variant="h4">Transcription Factor Binding Site Generator</Typography>
           </div>
           {/* <img style={{padding:"30px"}} width={100} height={100} src={dna}></img> */}
