@@ -4,15 +4,15 @@ import { Typography, TextField, Button } from '@material-ui/core';
 import {getMatrix} from "../queries/jaspar";
 import { calculateMatches, calculatePWM } from "../functionality/calculations";
 import { VictoryChart, VictoryBar, VictoryTheme } from "victory";
-import { Bar, Chart, Line } from "react-chartjs-2";
 
 
-function Graph() {
-    const [id, setId ] = useState("");
+function Page() {
+    const [id, setId ] = useState("PF0144");
     const [oneMatrix, setOneMatrix ] = useState({});
     const [sequence, setSequence] = useState("");
     const [dnaError, setDNAError]= useState(false);
     const [match, setMatch] =useState();
+    const [shortDNAWarning, setShortWarning] =useState(false);
 
     const fetchData = (id1) => {
       getMatrix(id1).then(function(result) {
@@ -31,6 +31,17 @@ function Graph() {
       }
     }
 
+    const checkPossibleMatching = (seq) => {
+      console.log(seq, oneMatrix.A.length)
+      if (seq.length<oneMatrix.A.length) {
+        setShortWarning(true)
+      } else{
+        setShortWarning(false)
+        let pwm = calculatePWM(oneMatrix)
+        setMatch(calculateMatches(pwm, seq))
+      }
+      
+    }
     return(
       <div className="container">
        <div style={{padding:'25px', display:"flex", flexDirection:"column"}}>
@@ -94,15 +105,16 @@ function Graph() {
             fullWidth={false}
             variant="contained"
             onClick={() => {
-              let pwm = calculatePWM(oneMatrix)
-              setMatch(calculateMatches(pwm, sequence))
+              checkPossibleMatching(sequence)
             }}
           > 
             Search
           </Button>
+          {shortDNAWarning && <Typography color="error" >The DNA sequence must be longer than {oneMatrix.A.length}</Typography>}
           {match &&
           <div className="resultater">
-            {/* <Typography>{"We found matches: "+ match + "and transcription factor bindings are most likely from position " + Math.max(match)}</Typography> */}
+            <Typography color='textSecondary'  variant="h6">{"Results"}</Typography>
+           
             <Typography style={{width: 600}}> The graph shows the trancription factor of the different positions on the DNA sequence.
                The X-axis shows the position within the DNA sequence, while the Y-axis display the values of the trancription factors.</Typography>
             <VictoryChart domainPadding={30} theme={VictoryTheme.material}  prependDefaultAxes={true}>
@@ -129,5 +141,5 @@ function Graph() {
     )
 }
 
-export default Graph;
+export default Page;
 
