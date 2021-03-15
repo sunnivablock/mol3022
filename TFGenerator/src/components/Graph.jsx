@@ -8,8 +8,8 @@ const Graph = (match) => {
     return(
     <div>
       <Typography color='textSecondary'  variant="h6">{"Results"}</Typography>
-      <Typography style={{width: 600}}> The graph shows the trancription factor of the different positions on the DNA sequence.
-          The X-axis shows the position within the DNA sequence, while the Y-axis display the values of the trancription factors.</Typography>
+      <Typography style={{width: 610}}> The graph shows the trancription factor of the different positions on the DNA sequence.
+          The X-axis shows the position within the DNA sequence, while the Y-axis displays the values of the trancription factors.</Typography>
       <VictoryChart domainPadding={30} theme={VictoryTheme.material}  prependDefaultAxes={true}>
         <VictoryBar
           alignment="start"
