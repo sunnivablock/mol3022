@@ -3,7 +3,7 @@
 ## Running the project
 
 1. Clone the repo `git clone https://github.com/sunnivablock/mol3022.git`
-2. Go to the file directory: `cd bioProsjekt`
+2. Go to the file directory: `cd TFGenerator`
 3. Install dependencies: `npm install`
 4. Run the app: `npm start`
 5. The application is now running at http://localhost:3000
