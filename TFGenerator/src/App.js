@@ -9,7 +9,7 @@ function App() {
         <div style={{display:"flex", flexDirection:"row"}}>
           {/* <img style={{padding:"30px"}} width={100} height={100} src={dna}></img> */}
           <div style={{paddingBottom:"50px", marginTop:"-100px"}}>
-            <Typography variant="h4">Transcription Factor Binding Site Generator</Typography>
+            <Typography variant="h4">Transcription Factor Binding Site Predictor</Typography>
           </div>
           {/* <img style={{padding:"30px"}} width={100} height={100} src={dna}></img> */}
         </div>
