@@ -11,7 +11,7 @@
 ## About the project
 
 This react application displays a probability score of different transcription factor binding sites when provided with a matrix id and DNA sequence.
-The Position Frequency Matrix (PFM) given for a Transcription Factor (TF), is fetched from the Jaspar API: http://jaspar.genereg.net/api/v1/matrix/. The PFM is used to calculate the corresponding Position Weight Matrix(PWM), before the PWM is used to calculate the most likely binding site on the given DNA sequence.
+The Position Frequency Matrix (PFM) given for a Transcription Factor (TF), is fetched from the Jaspar API: http://jaspar.genereg.net/api/v1/matrix/. The PFM is used to calculate the corresponding Position Weight Matrix (PWM), before the PWM is used to calculate the most likely binding site on the given DNA sequence.
 
 ## Dependencies
 We used Victory to display the graph https://formidable.com/open-source/victory/
