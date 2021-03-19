@@ -1,8 +1,8 @@
 import React, { useState} from "react";
-import "./GraphStyle.css";
+import "./PageStyle.css";
 import { Typography } from '@material-ui/core';
-import {getMatrix} from "../queries/jaspar";
-import { calculateMatches, calculatePWM } from "../functionality/calculations";
+import {getMatrix} from "../queries/Jaspar";
+import { calculateMatches, calculatePWM } from "../functionality/Calculations";
 import Graph from "./Graph"
 import DNASequence from "./DNASequence"
 import { PFM } from "./PFM";

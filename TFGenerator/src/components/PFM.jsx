@@ -1,5 +1,5 @@
 import React from "react";
-import "./GraphStyle.css";
+import "./PageStyle.css";
 import { Typography} from '@material-ui/core';
 
 
